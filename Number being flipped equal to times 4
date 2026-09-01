@@ -1,6 +1,0 @@
-for i in range(1000, 2500):
-    i = str(i)
-    flipped = i[::-1]
-    if int(flipped) == int(i) * 4:
-        print(f"The number is: {i}")
-        break
