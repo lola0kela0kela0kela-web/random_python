@@ -1,0 +1,13 @@
+import math
+
+terms = int(input("How many terms should be used? "))
+
+mylist = []
+n = 0
+for i in range(1, terms+1):
+    n += 1
+    mylist.append(1/n**2)
+
+sum_list = sum(mylist)
+pi_estimate = math.sqrt(6*sum_list)
+print(pi_estimate)

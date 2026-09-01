@@ -1,0 +1,22 @@
+def is_prime(n):
+
+   if n < 2:
+      return False
+
+   for i in range(2, int(n**0.5) + 1):
+      if n % i == 0:
+         return False
+
+   return True
+
+
+number = int(input("Enter a number greater than 2: "))
+
+while number % 2 or number < 2:
+    number = int(input("Try again! Enter a number greater than 2: "))
+
+for i in range(2, number):
+    j = number - i
+    if is_prime(i) is True and is_prime(j) is True:
+        print(number, "=", i, "+", j)
+        break
