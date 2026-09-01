@@ -1,0 +1,273 @@
+"""1) Viết chương trình và in giá trị theo công thức cho trước: Q = √([(2 * C * D)/H])
+(bằng chữ: Q bằng căn bậc hai của [(2 nhân C nhân D) chia H]. Với giá trị cố định của C là 50,
+H là 30. D là dãy giá trị tùy biến, được nhập vào từ giao diện người dùng, các giá trị của D được phân cách bằng dấu phẩy.
+
+Ví dụ: Giả sử chuỗi giá trị của D nhập vào là 100,150,180 thì đầu ra sẽ là 18,22,24."""
+
+import math
+
+C = 50
+H = 30
+D = input("Nhập vô một chuỗi số: ")
+chuỗi_số = [int(i) for i in D.split(',')]
+list = []
+
+for i in chuỗi_số:
+    i = int(round(math.sqrt(2 * C * i / H)))
+    list.append(i)
+
+print(list)
+
+"""2) Viết một chương trình có 2 chữ số, X, Y nhận giá trị từ đầu vào
+và tạo ra một mảng 2 chiều. Giá trị phần tử trong hàng thứ i và cột
+thứ j của mảng phải là i*j."""
+
+X = int(input("Nhập vô giá trị x: "))
+Y = int(input("Nhập vô giá trị y: "))
+mảng_2_chiều = []
+
+for i in range(X):
+    hàng_hiện_tại = []
+    for j in range(Y):
+        giá_trị = i * j
+        hàng_hiện_tại.append(giá_trị)
+
+    mảng_2_chiều.append(hàng_hiện_tại)
+
+print(mảng_2_chiều)
+
+"""3) Viết một chương trình chấp nhận chuỗi từ do người dùng nhập vào, phân tách nhau bởi
+ dấu phẩy và in những từ đó thành chuỗi theo thứ tự bảng chữ cái, phân tách nhau bằng
+ dấu phẩy.
+
+Giả sử đầu vào được nhập là: without,hello,bag,world, thì đầu ra sẽ là: bag,hello,without,world."""
+
+items = input("Nhập một chuỗi: ").split(',')
+items.sort()
+print(','.join(items))
+
+"""4) Viết một chương trình chấp nhận chuỗi là các dòng được nhập vào,
+chuyển các dòng này thành chữ in hoa và in ra màn hình. Giả sử đầu vào là:
+
+Hello world
+Practice makes perfect
+
+Thì đầu ra sẽ là:
+
+HELLO WORLD
+PRACTICE MAKES PERFECT"""
+
+lines = []
+while True:
+   s = input("Nhập: ")
+   if s == "":
+      break;
+   else:
+       lines.append(s.upper())
+
+for sentence in lines:
+    print (sentence)
+
+chuỗi = input("Nhập: ")
+print(chuỗi.upper())
+
+"""5) Viết một chương trình chấp nhận đầu vào là một chuỗi các từ tách biệt bởi khoảng
+trắng, loại bỏ các từ trùng lặp, sắp xếp theo thứ tự bảng chữ cái, rồi in chúng.
+
+Giả sử đầu vào là: hello world and practice makes perfect and hello world again
+
+Thì đầu ra là: again and hello makes perfect practice world"""
+
+mylist = []
+bị_lặp_chuỗi = input("Nhập vô: ")
+mylist = bị_lặp_chuỗi.split()
+
+mylist = list(set(mylist))
+mylist.sort()
+
+sentence = ' '.join(mylist)
+print(sentence)
+
+# ========================================
+# Better example
+s = input("Nhập chuỗi của bạn: ")
+words = [word for word in s.split(" ")]
+print (" ".join(sorted(list(set(words)))))
+# ========================================
+
+"""6) Viết một chương trình chấp nhận đầu vào là chuỗi các số nhị phân 4 chữ số,
+phân tách bởi dấu phẩy, kiểm tra xem chúng có chia hết cho 5 không. Sau đó in
+các số chia hết cho 5 thành dãy phân tách bởi dấu phẩy.
+
+Ví dụ đầu vào là: 0100,0011,1010,1001
+
+Đầu ra sẽ là: 1010"""
+
+giá_trị = input("Nhập chuỗi của bạn: ")
+myList1 = [i for i in giá_trị.split(",")]
+myList2 = []
+
+for item in myList1:
+    so_thap_phan = int(item, 2)
+
+    if so_thap_phan % 5 == 0:
+        myList2.append(item)
+
+print(",".join(myList2))
+
+"""7) Viết một chương trình tìm tất cả các số trong đoạn 1000 và 3000
+(tính cả 2 số này) sao cho tất cả các chữ số trong số đó là số chẵn.
+In các số tìm được thành chuỗi cách nhau bởi dấu phẩy, trên một dòng."""
+
+các_số_chẵn = []
+
+for i in range(1000, 3001):
+    s = str(i)
+    if (int(s[0])%2 == 0) and (int(s[1])%2 == 0) and (int(s[2])%2 == 0) and (int(s[3])%2 == 0):
+        các_số_chẵn.append(s)
+
+print(",".join(các_số_chẵn))
+
+
+"""8) Viết một chương trình chấp nhận đầu vào là một câu,
+ đếm số chữ cái và chữ số trong câu đó. Giả sử đầu vào
+ sau được cấp cho chương trình: hello world! 123
+
+Thì đầu ra sẽ là:
+
+Số chữ cái là: 10
+Số chữ số là: 3"""
+
+đầu_vào = input("Nhập vô đầu vào: ")
+letters = 0
+digits = 0
+for char in đầu_vào:
+    if char.isalpha() == True:
+        letters += 1
+
+for char in đầu_vào:
+    if char.isnumeric() == True:
+        digits += 1
+
+print(f"Số chữ cái là: {letters}")
+print(f"Số chữ số là: {digits}")
+
+"""9) Viết một chương trình chấp nhận đầu vào là một câu, đếm chữ hoa, chữ thường.
+
+Giả sử đầu vào là: Quản Trị Mạng
+
+Thì đầu ra là:
+
+Chữ hoa: 3
+Chữ thường: 8"""
+
+đầu_vào = input("Nhập vô đầu vào: ")
+chữ_hoa = 0
+chữ_thường = 0
+
+for char in đầu_vào:
+    if char.isupper() == True:
+        chữ_hoa += 1
+    elif char.islower() == True:
+        chữ_thường += 1
+
+print(f"Chữ hoa: {chữ_hoa}")
+print(f"Chữ thường: {chữ_thường}")
+
+"""10) Viết một chương trình tính giá trị của a+aa+aaa+aaaa với a là số được nhập vào bởi người dùng.
+
+Giả sử a được nhập vào là 1 thì đầu ra sẽ là: 1234"""
+a = int(input("Nhập vô đầu vào: "))
+
+a_2 = str(a) + str(a)
+
+a_3 = a_2 + str(a)
+
+a_4 = a_3 + str(a)
+
+đầu_ra = 0
+đầu_ra = int(a) + int(a_2) + int(a_3) + int(a_4)
+
+print(đầu_ra)
+
+"""11) Sử dụng một danh sách để lọc các số lẻ từ danh sách được người dùng nhập vào.
+
+Giả sử đầu vào là: 1,2,3,4,5,6,7,8,9 thì đầu ra phải là: 1,3,5,7,9"""
+
+danh_sách = input("Nhập vào một danh sách số: ")
+myList1 = [i for i in danh_sách.split(",")]
+myList2 = []
+for item in myList1:
+    n = int(item)
+
+    if n % 2 == 1:
+        myList2.append(str(n))
+
+print(",".join(myList2))
+
+"""12) Viết chương trình tính số tiền thực của một tài khoản ngân hàng dựa
+ trên nhật ký giao dịch được nhập vào từ giao diện điều khiển.
+
+ Định dạng nhật ký như sau:
+ D 100
+W 200
+
+(D là tiền gửi, W là tiền rút ra).
+
+Giả sử đầu vào được cung cấp là:
+
+D 300
+D 300
+W 200
+D 100
+Thì đầu ra sẽ là: 500"""
+
+số_tiền_D = []
+số_tiền_W = []
+tiền_tổng = 0
+
+while True:
+    hỏi_user = input("Nhập vô: ")
+    if hỏi_user == "":
+        break
+
+    hỏi_user = hỏi_user.split(" ")
+    if hỏi_user[0].upper() == 'W':
+        số_tiền_W.append(hỏi_user[1])
+    elif hỏi_user[0].upper() == 'D':
+        số_tiền_D.append(hỏi_user[1])
+
+for i in số_tiền_D:
+    i = int(i)
+    tiền_tổng = tiền_tổng + i
+
+for i in số_tiền_W:
+    i = int(i)
+    tiền_tổng = tiền_tổng - i
+
+print(tiền_tổng)
+
+"""13) Viết chương trình Python nhập một dãy số nguyên, sau đó kiểm tra xem nó có khả đối xứng không?
+Nếu có, hãy biến đổi nó để được một dãy đối xứng."""
+
+dãy_số = input("Nhập vô dãy số: ").split(" ")
+
+dãy_số = [int(x) for x in dãy_số]
+
+n = len(dãy_số)
+
+điều_kiện = 0
+
+for i in range(n):
+    vị_trí_đối_xứng = n - 1 - i
+
+    if dãy_số[i] == dãy_số[vị_trí_đối_xứng]:
+        pass
+        điều_kiện += 1
+    else:
+        print("Không khớp.")
+        break
+
+if điều_kiện == len(dãy_số):
+    print("Khớp")
+

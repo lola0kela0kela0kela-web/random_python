@@ -1,0 +1,81 @@
+"""1) Một website yêu cầu người dùng nhập tên người dùng và mật khẩu để đăng ký. Viết chương trình để kiểm tra tính hợp lệ của mật khẩu mà người dùng nhập vào.
+
+Các tiêu chí kiểm tra mật khẩu bao gồm:
+
+1. Ít nhất 1 chữ cái nằm trong [a-z]
+2. Ít nhất 1 số nằm trong [0-9]
+3. Ít nhất 1 kí tự nằm trong [A-Z]
+4. Ít nhất 1 ký tự nằm trong [$ # @]
+5. Độ dài mật khẩu tối thiểu: 6
+6. Độ dài mật khẩu tối đa: 12
+
+Chương trình phải chấp nhận một chuỗi mật khẩu phân tách nhau bởi dấu phẩy và kiểm tra xem chúng có đáp ứng những tiêu chí trên hay không. Mật khẩu hợp lệ sẽ được in, mỗi mật khẩu cách nhau bởi dấu phẩy.
+
+Ví dụ mật khẩu nhập vào chương trình là: ABd1234@1,a F1#,2w3E*,2We3345
+
+Thì đầu ra sẽ là: ABd1234@1"""
+
+passwords = input("Nhập vô password: ").split(",")
+passwords_đặt_điều_kiện = []
+
+for item in passwords:
+    if len(item) >= 6 and len(item) <= 12:
+        is_lower = False
+        is_upper = False
+        is_numeric = False
+        is_special_character = False
+        for char in item:
+            if char.islower() == True:
+                is_lower = True
+                continue
+
+            if char.isnumeric() == True:
+                is_numeric = True
+                continue
+
+            if char.isupper() == True:
+                is_upper = True
+                continue
+
+            if char in "$#@":
+                is_special_character = True
+                continue
+
+        if is_lower == True and is_numeric == True and is_upper == True and is_special_character == True:
+            passwords_đặt_điều_kiện.append(item)
+
+
+if len(passwords_đặt_điều_kiện) != 0:
+    print(",".join(passwords_đặt_điều_kiện))
+
+"""2) Viết chương trình sắp xếp tuple (name, age, score) theo thứ tự tăng dần, name là string, age và height là number.
+Tuple được nhập vào bởi người dùng. Tiêu chí sắp xếp là:
+
+Sắp xếp theo name sau đó sắp xếp theo age, sau đó sắp xếp theo score. Ưu tiên là tên > tuổi > điểm.
+
+Nếu đầu vào là:
+
+Tom,19,80
+John,20,90
+Jony,17,91
+Jony,17,93
+Json,21,85
+
+Thì đầu ra sẽ là:
+
+[('John', '20', '90'), ('Jony', '17', '91'), ('Jony', '17', '93'), ('Json', '21', '85'), ('Tom', '19', '80')]"""
+
+list1 = []
+
+while True:
+    đầu_vào = input("Nhập vô tên, tuổi, score: ")
+    if not đầu_vào:
+        break
+
+    đầu_vào = đầu_vào.split(',')
+    my_tuple = tuple(đầu_vào)
+    list1.append(my_tuple)
+
+
+list1.sort()
+print(list1)

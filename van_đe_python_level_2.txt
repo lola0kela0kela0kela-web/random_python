@@ -1,0 +1,120 @@
+"""1) Viết một chương trình tính tổng của tất cả các số chẵn từ 1 đến n """
+
+n = int(input("Nhập n: "))
+số = 1
+sum = 0
+while True:
+    if số > n:
+        break
+
+    số += 1
+
+    if số % 2 == 0:
+        sum = sum + số
+
+print(sum)
+
+"""2) Viết một hàm kiểm tra xem một số nhập từ người dùng có phải là số nguyên tố hay không."""
+import math
+
+đầu_vào = int(input("Nhập: "))
+số_nguyên_tố = True
+
+def check_số_nguyên_tố():
+    global số_nguyên_tố
+    for i in range(2, int(math.sqrt(đầu_vào)) + 1):
+        if đầu_vào % i == 0:
+            số_nguyên_tố = False
+
+    return số_nguyên_tố
+
+s = check_số_nguyên_tố()
+
+if số_nguyên_tố == True:
+    print(f"{đầu_vào} là một số nguyên tố")
+elif số_nguyên_tố == False:
+    print(f"{đầu_vào} không phải là một số nguyên tố")
+
+"""3) Viết một chương trình chuyển đổi nhiệt độ từ độ C sang độ F hoặc ngược lại, dựa vào lựa chọn của người dùng."""
+C = 0
+F = 0
+
+def số_1(C, F):
+    C = float(input("Độ C: "))
+    F = (C * 1.8) + 32
+    print(f"Độ F của {C} độ C là {F} độ F")
+
+def số_2(C, F):
+    F = float(input("Độ F: "))
+    C = (F-32) / 1.8
+    print(f"Độ C của {F} độ F là {C} độ C")
+
+print("1. Độ C sang độ F")
+print("2. Độ F sang độ C")
+lựa_chọn = input("1 hay 2: ")
+
+if lựa_chọn == "1":
+    số_1(C, F)
+elif lựa_chọn == "2":
+    số_2(C, F)
+
+"""4) Viết một chương trình để kiểm tra xem một chuỗi con có tồn tại trong chuỗi khác hay không."""
+
+đầu_vào = input("Chuỗi: ")
+chuỗi = "Hello world"
+if đầu_vào in chuỗi:
+    print(f"yayy, {đầu_vào} có trong {chuỗi}")
+else:
+    print(f"noo, {đầu_vào} không có trong {chuỗi}")
+
+"""5) Viết một hàm để tìm số lớn thứ hai trong một danh sách số nguyên."""
+
+danh_sách = input("Nhập vô các số nguyên, cách bởi dấu phẩy: ").split(",")
+các_số = []
+for i in danh_sách:
+    i = int(i)
+    các_số.append(i)
+
+def hai_số_lớn_nhất(danh_sách, các_số):
+    các_số.sort()
+    print(các_số[-1])
+    print(các_số[-2])
+
+chạy = hai_số_lớn_nhất(danh_sách, các_số)
+
+"""6) Viết một hàm để đảo ngược một chuỗi."""
+
+chuỗi = input("Nhập: ")
+print(chuỗi[::-1])
+
+"""7) Viết một chương trình để đếm số lần xuất hiện của mỗi ký tự trong một chuỗi."""
+
+chuỗi = input("Nhập: ")
+chars = list(chuỗi)
+đã_check = []
+for i in chars:
+    if i not in đã_check:
+        print(f"Occurence of {i}: {chars.count(i)}")
+        đã_check.append(i)
+
+"""8) Viết một hàm để tính giai thừa của một số nguyên dương."""
+
+số = int(input("Nhập: "))
+đầu_vào = số
+giai_thừa = [số]
+kết_quả = 1
+for i in range(số - 1):
+    số = số - 1
+    giai_thừa.append(số)
+
+for i in giai_thừa:
+    kết_quả = kết_quả * i
+
+print(f"Kết quả của {đầu_vào}! là: {kết_quả}")
+
+"""9) Viết một chương trình sử dụng xử lý ngoại lệ để xử lý trường hợp nhập vào không phải là số."""
+
+try:
+    num = int(input("Num: "))
+except ValueError:
+    print("Error: Invalid data type")

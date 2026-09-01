@@ -1,0 +1,13 @@
+"""1) Write a single-line list comprehension that takes a list of strings, filters out strings shorter than 4 characters,
+ and converts the remaining strings to uppercase. """
+
+mylist = input("Nhập: ").split(",")
+
+for i in mylist:
+    if len(i) < 4:
+        mylist.remove(i)
+
+uppercase_list = [item.upper() for item in mylist]
+
+print(uppercase_list)
+

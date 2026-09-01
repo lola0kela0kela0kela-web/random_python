@@ -1,0 +1,47 @@
+"""1) Viết một chương trình để đếm số từ trong một câu nhập từ người dùng."""
+
+text = input("Nhập: ")
+số_từ = len(text.split())
+print(f"Số từ: {số_từ}")
+
+"""2) Viết một chương trình tính tổng n số đầu tiên trong dãy Fibonacci."""
+
+n = int(input("Tính tổng bao nhiêu số?: "))
+fibonacci = [0, 1]
+thứ_tự_1 = 0
+thứ_tự_2 = 1
+for i in range(n):
+    fibonacci.append(fibonacci[thứ_tự_1] + fibonacci[thứ_tự_2])
+    thứ_tự_1 += 1
+    thứ_tự_2 += 1
+
+sum_fibonacci = sum(fibonacci) - fibonacci[-1] - fibonacci[-2]
+print(sum_fibonacci)
+
+"""3) Viết một chương trình để kiểm tra xem một chuỗi có phải là chuỗi đối xứng hay không."""
+
+đầu_vào = input("Chuỗi: ")
+if đầu_vào == đầu_vào[::-1]:
+    print("Đối xứng")
+else:
+    print("Không đối xứng")
+
+"""4) Viết một chương trình để tìm số lớn nhất trong một danh sách số nguyên,
+nhưng không vượt quá một giới hạn được chỉ định."""
+
+giới_hạn = int(input("Giới hạn: "))
+
+đầu_vào = input("Nhập: ").split(", ")
+các_số = []
+for i in đầu_vào:
+    i = int(i)
+    các_số.append(i)
+
+danh_sách = các_số.sort()
+các_số = các_số[::-1]
+print(các_số)
+
+for i in các_số:
+    if i < giới_hạn:
+        print(f"Số đạt điều kiện là: {i}")
+        break
